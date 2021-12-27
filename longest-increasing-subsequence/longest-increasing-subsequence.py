@@ -1,6 +1,7 @@
 from bisect import bisect_left
 
 class Solution:
+    #Uses binary search to get position of element which is just greater than n
     def getIndexOfNextGreaterElement(self, n, dp)->int:
         pos = bisect_left(dp,n)
         if pos==len(dp):
@@ -11,6 +12,7 @@ class Solution:
         dp=[]
         for i in range(len(nums)):
             index = self.getIndexOfNextGreaterElement(nums[i],dp)
+            
             if index is None:
                 dp.append(nums[i])
             else:
