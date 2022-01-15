@@ -7,33 +7,23 @@ class ListNode:
         
 
 class Solution:
-    
-    
-    def getLength(self,head):
-        count=0
-        while head:
-            count+=1
-            head=head.next
-        return count
-            
-    
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        count=0
-        current=head
-        totalLen=self.getLength(head)
-        print(totalLen)
-        prev=None
-        while count<totalLen-n:
-            prev=current
-            current=current.next
-            count+=1
-        if prev==None and current.next==None:
-            head=None
-        elif prev==None:
-            head=current.next
-        elif current.next==None:
-            prev.next=None
-        else:
-            prev.next=current.next
+    def removeNthFromEnd(self, head, n):
+        fast = slow = head
+        #move fast pointer, n steps ahead
+        for _ in range(n):
+            fast = fast.next
+        #if fast=none, possible only if n==1
+        if not fast:
+            return head.next
         
+        #moving fast and slow pointer till, fast reaches to end
+        #hence, fast will move n+(total length - n) steps ahead
+        #slow will move (total lenght-n) steps ahead
+        while fast.next:
+            fast = fast.next
+            slow = slow.next
+        
+        #hence, slow.next be the pointer to element to be deleted
+        #hence , swapping the values
+        slow.next = slow.next.next
         return head
