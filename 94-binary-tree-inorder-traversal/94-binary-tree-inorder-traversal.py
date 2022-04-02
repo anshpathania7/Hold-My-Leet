@@ -11,8 +11,7 @@ class Solution:
         if root==None:
             return self.val
         self.inorderTraversal(root.left)
-        if self.val!=None:
-            self.val.append(root.val)
+        self.val.append(root.val)
         self.inorderTraversal(root.right)
         return self.val
         
