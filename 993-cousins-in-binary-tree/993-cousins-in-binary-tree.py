@@ -6,6 +6,8 @@ class TreeNode:
         self.right = right
 class Solution:
     
+    #Array will hold [current root , current level]
+    #for corresponding numbers x and y
     def __init__(self):
         self.x=[None,None]
         self.y=[None,None]
@@ -26,6 +28,6 @@ class Solution:
     
     def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
         self.markPositions(root,x,y,0)
-        #print(self.x,self.y)
+        #checking if root for both x,y are not same and current level of both x,y are same
         return self.x[0]!=self.y[0] and self.x[1]==self.y[1]
         
