@@ -10,16 +10,9 @@ class MinStack:
                 'minimum' : value,
             })
         else:
-            previousMinimum = self.stack[-1]['minimum']
-            if  previousMinimum> value:
-                self.stack.append({
+            self.stack.append({
                     'current' : value,
-                    'minimum' : value,
-                })
-            else:
-                self.stack.append({
-                    'current': value,
-                    'minimum' : previousMinimum,
+                    'minimum' : min(value,self.stack[-1]['minimum']),
                 })
 
     def pop(self) -> None:
